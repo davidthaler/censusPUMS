@@ -3,11 +3,11 @@
 # author: David Thaler
 
 TEN =  ['Not in universe (vacant or GQ)',
-        'Owned by you or someone in this household with a mortgage or loan',
-        'Owned by you or someone in this household free and clear (without a mortgage or loan)',
+        'Owned with a mortgage',
+        'Owned free and clear',
         'Rented',
         'Occupied without payment of rent']
-        
+
 VACS = ['Not in universe (occupied or GQ)',
         'For rent',
         'Rented, not occupied',
@@ -26,7 +26,30 @@ HHT = [ 'Not in universe (Vacant or GQ)',
         'Nonfamily household: Female householder, living alone',
         'Nonfamily household: Female householder, not living alone']
 
-def get_data_dict():
+CHLD = ['Not in universe (vacant or GQ)',
+        'With related children under 6 years only',
+        'With related children 6 to 17 years only',
+        'With related children under 6 years and 6 to 17 years',
+        'No related children under 18 years']
+
+UPART = ['Not in universe (vacant or GQ)',
+        'Male householder and male partner',
+        'Male householder and female partner',
+        'Female householder and female partner',
+        'Female householder and male partner',
+        'All other households']
+
+MULTG = ['Not in universe (vacant or GQ)',
+        'Not a multigenerational household',
+        'Multigenerational household']
+
+def housing_data_dict():
     out = {}
-    out['HHT'] = dict(zip(range(len(HHT)), HHT))
+    out['TENURE']  = dict(zip(range(len(TEN)), TEN))
+    out['VACS'] = dict(zip(range(len(VACS)), VACS))
+    out['HHT']  = dict(zip(range(len(HHT)), HHT))
+    out['PAOC'] = dict(zip(range(len(CHLD)), CHLD))
+    out['PARC'] = dict(zip(range(len(CHLD)), CHLD))
+    out['UPART'] = dict(zip(range(len(UPART)), UPART))
+    out['MULTG'] = dict(zip(range(len(MULTG)), MULTG))
     return out
