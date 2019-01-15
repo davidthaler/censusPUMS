@@ -1,6 +1,7 @@
 # Code for level translation of categorical variables in 2010 Census PUMS data.
 #
 # author: David Thaler
+import pandas as pd
 
 TEN =  ['Not in universe (vacant or GQ)',
         'Owned with a mortgage',
@@ -43,6 +44,8 @@ MULTG = ['Not in universe (vacant or GQ)',
         'Not a multigenerational household',
         'Multigenerational household']
 
+UNITTYPE = ['Housing unit', 'Group Quarters']
+
 def housing_data_dict():
     out = {}
     out['TENURE']  = dict(zip(range(len(TEN)), TEN))
@@ -52,4 +55,12 @@ def housing_data_dict():
     out['PARC'] = dict(zip(range(len(CHLD)), CHLD))
     out['UPART'] = dict(zip(range(len(UPART)), UPART))
     out['MULTG'] = dict(zip(range(len(MULTG)), MULTG))
+    out['UNITTYPE'] = dict(zip(range(len(UNITTYPE)), UNITTYPE))
     return out
+
+def make_categorical(x, field, dd):
+        if field in dd:
+            return pd.Categorical(values=x[field].map(dd[field]), 
+                                    categories=list(dd[field].values()))
+        else:
+            raise KeyError('Column name not in data dictionary.')
