@@ -52,6 +52,19 @@ def load_housing10(path, chunksize=None):
     return data
 
 def load_person10(path, chunksize=None):
+    '''
+    Load population data from 2010 Census fixed-width files and return.
+    Returns either chunk iterator of size chunksize or a data frame with all
+    data if chunksize is None
+
+    Args:
+        path: string path to the data
+        chunksize: int or None. If None, return all data in a data frame.
+            If int, return iterator over chunks with size of chunksize.
+
+    Returns:
+        either a Pandas data frame or a chunk iterator
+    '''
     person_colstart0 = [x-1 for x in PERSON_COLSTART1]
     person_colspec = list(zip(person_colstart0[:-1], person_colstart0[1:]))
     data = pd.read_fwf(path, colspecs=person_colspec, names=PERSON_COLNAMES,
