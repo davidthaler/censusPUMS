@@ -27,7 +27,13 @@ HHT = [ 'Not in universe (Vacant or GQ)',
         'Nonfamily household: Female householder, living alone',
         'Nonfamily household: Female householder, not living alone']
 
-CHLD = ['Not in universe (vacant or GQ)',
+PAOC = ['Not in universe (vacant or GQ)',
+        'With own children under 6 years only',
+        'With own children 6 to 17 years only',
+        'With own children under 6 years and 6 to 17 years',
+        'No own children under 18 years']
+
+PARC = ['Not in universe (vacant or GQ)',
         'With related children under 6 years only',
         'With related children 6 to 17 years only',
         'With related children under 6 years and 6 to 17 years',
@@ -46,21 +52,26 @@ MULTG = ['Not in universe (vacant or GQ)',
 
 UNITTYPE = ['Housing unit', 'Group Quarters']
 
+def add_key(d, key, values):
+    d[key] = dict(zip(range(len(values)), values))
+
+
 def housing_data_dict():
     out = {}
-    out['TENURE']  = dict(zip(range(len(TEN)), TEN))
-    out['VACS'] = dict(zip(range(len(VACS)), VACS))
-    out['HHT']  = dict(zip(range(len(HHT)), HHT))
-    out['PAOC'] = dict(zip(range(len(CHLD)), CHLD))
-    out['PARC'] = dict(zip(range(len(CHLD)), CHLD))
-    out['UPART'] = dict(zip(range(len(UPART)), UPART))
-    out['MULTG'] = dict(zip(range(len(MULTG)), MULTG))
-    out['UNITTYPE'] = dict(zip(range(len(UNITTYPE)), UNITTYPE))
+    add_key(out, 'TENURE', TEN)
+    add_key(out, 'VACS', VACS)
+    add_key(out, 'HHT', HHT)
+    add_key(out, 'PAOC', PAOC)
+    add_key(out, 'PARC', PARC)
+    add_key(out, 'UPART', UPART)
+    add_key(out, 'MULTG', MULTG)
+    add_key(out, 'UNITTYPE', UNITTYPE)
     return out
 
+
 def make_categorical(x, field, dd):
-        if field in dd:
-            return pd.Categorical(values=x[field].map(dd[field]), 
-                                    categories=list(dd[field].values()))
-        else:
-            raise KeyError('Column name not in data dictionary.')
+    if field in dd:
+        return pd.Categorical(values=x[field].map(dd[field]), 
+                categories=list(dd[field].values()))
+    else:
+        raise KeyError('Column name not in data dictionary.')
