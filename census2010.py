@@ -29,13 +29,6 @@ PERSON_COLSTART1 = [1, 2, 9, 11, 14, 16, 17, 18, 19, 20, 21, 22, 24,
                     25, 26, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 
                     39, 41, 44, 45, 46, 47]
 
-def load_person10(path, chunksize=None):
-    person_colstart0 = [x-1 for x in PERSON_COLSTART1]
-    person_colspec = list(zip(person_colstart0[:-1], person_colstart0[1:]))
-    data = pd.read_fwf(path, colspecs=person_colspec, names=PERSON_COLNAMES, 
-                       chunksize=chunksize)
-    return data
-
 def load_housing10(path, chunksize=None):
     '''
     Load housing data from 2010 Census fixed-width files and return.
@@ -57,3 +50,31 @@ def load_housing10(path, chunksize=None):
     data = pd.read_fwf(path, colspecs=house_colspec, names=HOUSE_COLNAMES,
                        chunksize=chunksize)
     return data
+
+def load_person10(path, chunksize=None):
+    person_colstart0 = [x-1 for x in PERSON_COLSTART1]
+    person_colspec = list(zip(person_colstart0[:-1], person_colstart0[1:]))
+    data = pd.read_fwf(path, colspecs=person_colspec, names=PERSON_COLNAMES,
+                       chunksize=chunksize)
+    return data
+
+def person_subsample(housing_df, person_df):
+    '''
+    The Census housing record has a subsample field (SUBSAMPL) for computing
+    group jackknife standard errors, but this field is not in the person data.
+    The procedure is to exclude all persons in the excluded housing units.
+    This function makes a column with the index of the person_df that maps on
+    the housing unit SUBSAMPL by SERIALNO.
+
+    To use this:
+        person_df['SUBSAMPL'] = person_subsample(housing_df, person_df)
+
+    Args:
+        housing_df: pandas data frame of Census housing data, with SUBSAMPL
+        person_df: data frame of Census person data, without SUBSAMPL
+
+    Returns:
+        pd.Series of subsample numbers that can be appended to person_df
+    '''
+    ss_dict = dict(zip(housing_df.SERIALNO, housing_df.SUBSAMPL))
+    return person_df.SERIALNO.map(ss_dict)
