@@ -16,7 +16,7 @@ HOUSE_COLSTART1 = [1, 2, 9, 11, 12, 13, 18, 32, 46, 48, 50, 52,
                    69, 71, 72, 73, 74]
 
 # Person record column names from PUMS documentation
-PERSON_COLNAMES = ['RECTYPE', 'SERIALNO', 'PNUM', 'PSUB', 'RELATE', 
+PERSON_COLNAMES = ['RECTYPE', 'SERIALNO', 'PNUM', 'PSUB', 'PWEIGHT', 'RELATE',
                    'RELATEA', 'OC', 'RC', 'SEX', 'SEXA', 'SSPA', 'AGE',
                    'AGEA', 'QTRBIR', 'HISPAN', 'HISPANA', 'NUMRACE',
                    'WHITE', 'BLACK', 'AIAN', 'ASIAN', 'NHAW', 'OPI', 
@@ -25,7 +25,7 @@ PERSON_COLNAMES = ['RECTYPE', 'SERIALNO', 'PNUM', 'PSUB', 'RELATE',
 
 # 1-based column start index in person record from PUMS documentation
 # NB: this includes the end index of the data (as the start of the padding)
-PERSON_COLSTART1 = [1, 2, 9, 11, 14, 16, 17, 18, 19, 20, 21, 22, 24,
+PERSON_COLSTART1 = [1, 2, 9, 11, 12, 14, 16, 17, 18, 19, 20, 21, 22, 24,
                     25, 26, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 
                     39, 41, 44, 45, 46, 47]
 
