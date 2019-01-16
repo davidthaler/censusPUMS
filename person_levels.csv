@@ -57,6 +57,20 @@ NUMRACE,3,Three races
 NUMRACE,4,Four races
 NUMRACE,5,Five races
 NUMRACE,6,Six races
+WHITE,0,No
+WHITE,1,"Yes, alone or in combination with one or more other races"
+BLACK,0,No
+BLACK,1,"Yes, alone or in combination with one or more other races"
+AIAN,0,No
+AIAN,1,"Yes, alone or in combination with one or more other races"
+ASIAN,0,No
+ASIAN,1,"Yes, alone or in combination with one or more other races"
+NHAW,0,No
+NHAW,1,"Yes, alone or in combination with one or more other races"
+OPI,0,No
+OPI,1,"Yes, alone or in combination with one or more other races"
+OTHER,0,No
+OTHER,1,"Yes, alone or in combination with one or more other races"
 RACESHORT,1,White alone
 RACESHORT,2,Black or African American alone
 RACESHORT,3,American Indian alone
@@ -68,3 +82,6 @@ RACESHORT,8,Other Pacific Islander alone
 RACESHORT,9,Native Hawaiian/Pacific Islander
 RACESHORT,10,Some other race alone
 RACESHORT,11,Two or more major race groups
+GQTYP,0,Not in a GQ
+GQTYP,1,Institutional group quarters
+GQTYP,2,Noninstitutional group quarters
