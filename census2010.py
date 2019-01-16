@@ -29,6 +29,7 @@ PERSON_COLSTART1 = [1, 2, 9, 11, 12, 14, 16, 17, 18, 19, 20, 21, 22, 24,
                     25, 26, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 
                     39, 41, 44, 45, 46, 47]
 
+
 def load_housing10(path, chunksize=None):
     '''
     Load housing data from 2010 Census fixed-width files and return.
@@ -51,6 +52,7 @@ def load_housing10(path, chunksize=None):
                        chunksize=chunksize)
     return data
 
+
 def load_person10(path, chunksize=None):
     '''
     Load population data from 2010 Census fixed-width files and return.
@@ -70,6 +72,7 @@ def load_person10(path, chunksize=None):
     data = pd.read_fwf(path, colspecs=person_colspec, names=PERSON_COLNAMES,
                        chunksize=chunksize)
     return data
+
 
 def person_subsample(housing_df, person_df):
     '''
@@ -91,3 +94,29 @@ def person_subsample(housing_df, person_df):
     '''
     ss_dict = dict(zip(housing_df.SERIALNO, housing_df.SUBSAMPL))
     return person_df.SERIALNO.map(ss_dict)
+
+
+def make_categorical(x, field, dd):
+    '''
+    Apply the data dictionary to an integer-coded categorical field,
+    resulting in a string-labelled categorical variable. Result is returned
+    as a new pandas Series. 
+
+    Args:
+        x: person or housing data frame
+        field: name of a column in x
+        dd: data-dictionary for x as a pandas Data Frame
+
+    Returns:
+        Pandas Series (pd.Categorical) with integer-coded levels in x[field]
+        translated using values from dd.
+
+    Raises:
+        KeyError if field not in dd
+    '''
+    if field not in set(dd.field):
+        raise KeyError('Column name not in data dictionary.')
+    dd_field = dd[dd.field==field]
+    dd_map = dict(zip(dd_field.level, dd_field.value))
+    return pd.Categorical(values=x[field].map(dd_map), 
+                        categories=dd_field.value)

@@ -2,7 +2,7 @@
 #
 # author: David Thaler
 import pandas as pd
-import translate
+import census2010
 
 
 def total(x):
@@ -80,7 +80,7 @@ def tabulate(x, field, dd=None):
     '''
     Groups x by field and tabulates totals.
     If the data dictionary, dd, is provided the levels are renamed using it.
-    Do not use dd if the field was translated with translate.make_categorical.
+    Do not use dd if the field was translated with census2010.make_categorical.
 
     Args:
         x: person or housing data frame
@@ -91,11 +91,8 @@ def tabulate(x, field, dd=None):
         totals tabulated within levels of field
     '''
     if dd is not None:
-        if field in dd:
-            cat_var = translate.make_categorical(x, field, dd)
-            gp = x.groupby(cat_var)
-        else:
-            raise KeyError('Column name not in data dictionary.')
+        cat_var = census2010.make_categorical(x, field, dd)
+        gp = x.groupby(cat_var)
     else:
         gp = x.groupby(field)
     return gp.apply(total)
@@ -105,7 +102,7 @@ def tabulate_proportion(x, field, dd=None):
     '''
     Groups x by field and tabulates group proportions.
     If the data dictionary, dd, is provided the levels are renamed using it.
-    Do not use dd if the field was translated with translate.make_categorical.
+    Do not use dd if the field was translated with census2010.make_categorical.
 
     Args:
         x: person or housing data frame
