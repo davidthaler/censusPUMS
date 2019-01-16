@@ -68,10 +68,3 @@ def housing_data_dict():
     add_key(out, 'UNITTYPE', UNITTYPE)
     return out
 
-
-def make_categorical(x, field, dd):
-    if field in dd:
-        return pd.Categorical(values=x[field].map(dd[field]), 
-                categories=list(dd[field].values()))
-    else:
-        raise KeyError('Column name not in data dictionary.')
