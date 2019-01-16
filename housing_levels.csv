@@ -1,0 +1,43 @@
+field,level,value
+TENURE,0,Not in universe (vacant or GQ)
+TENURE,1,Owned with a mortgage
+TENURE,2,Owned free and clear
+TENURE,3,Rented
+TENURE,4,Occupied without payment of rent
+VACS,0,Not in universe (occupied or GQ)
+VACS,1,For rent
+VACS,2,"Rented, not occupied"
+VACS,3,For sale only
+VACS,4,"Sold, not occupied"
+VACS,5,"For seasonal, recreational or occasional use"
+VACS,6,For migrant workers
+VACS,7,Other vacant
+HHT,0,Not in universe (Vacant or GQ)
+HHT,1,Husband-wife family household
+HHT,2,Other family household: Male householder
+HHT,3,Other family household: Female householder
+HHT,4,"Nonfamily household: Male householder, living alone"
+HHT,5,"Nonfamily household: Male householder, not living alone"
+HHT,6,"Nonfamily household: Female householder, living alone"
+HHT,7,"Nonfamily household: Female householder, not living alone"
+PAOC,0,Not in universe (vacant or GQ)
+PAOC,1,With related children under 6 years only
+PAOC,2,With related children 6 to 17 years only
+PAOC,3,With related children under 6 years and 6 to 17 years
+PAOC,4,No related children under 18 years
+PARC,0,Not in universe (vacant or GQ)
+PARC,1,With related children under 6 years only
+PARC,2,With related children 6 to 17 years only
+PARC,3,With related children under 6 years and 6 to 17 years
+PARC,4,No related children under 18 years
+UPART,0,Not in universe (vacant or GQ)
+UPART,1,Male householder and male partner
+UPART,2,Male householder and female partner
+UPART,3,Female householder and female partner
+UPART,4,Female householder and male partner
+UPART,5,All other households
+MULTG,0,Not in universe (vacant or GQ)
+MULTG,1,Not a multigenerational household
+MULTG,2,Multigenerational household
+UNITTYPE,0,Housing unit
+UNITTYPE,1,Group Quarters

@@ -1,0 +1,70 @@
+field,level,value
+RELATE,1,Householder
+RELATE,2,Husband/wife
+RELATE,3,Biological son/daughter
+RELATE,4,Adopted son/daughter
+RELATE,5,Stepson/stepdaughter
+RELATE,6,Brother/sister
+RELATE,7,Father/mother
+RELATE,8,Grandchild
+RELATE,9,Parent-in-law
+RELATE,10,Son-in-law/daughter-in-law
+RELATE,11,Other relative
+RELATE,12,Roomer/boarder
+RELATE,13,Housemate/roommate
+RELATE,14,Unmarried partner
+RELATE,15,Other non-relative
+RELATE,16,Institutional group quarters person
+RELATE,17,Noninstitutional group quarters person
+OC,0,Not an own child under 18 years (includes GQ)
+OC,1,"Yes, own child under 18 years"
+RC,0,Not a related child under 18 years (includes GQ)
+RC,1,"Yes, related child under 18 years"
+SEX,1,Male
+SEX,2,Female
+QTRBIR,0,January-March
+QTRBIR,1,April-June
+QTRBIR,2,July-September
+QTRBIR,3,October-December
+HISPAN,1,Not Hispanic or Latino
+HISPAN,2,Mexican
+HISPAN,3,Puerto Rican
+HISPAN,4,Cuban
+HISPAN,5,Dominican
+HISPAN,6,Costa Rican
+HISPAN,7,Guatemalan
+HISPAN,8,Honduran
+HISPAN,9,Nicaraguan
+HISPAN,10,Panamanian
+HISPAN,11,Salvadoran
+HISPAN,12,Other Central American
+HISPAN,13,Argentinean
+HISPAN,14,Bolivian
+HISPAN,15,Chilean
+HISPAN,16,Colombian
+HISPAN,17,Ecuadorian
+HISPAN,18,Paraguayan
+HISPAN,19,Peruvian
+HISPAN,20,Uruguayan
+HISPAN,21,Venezuelan
+HISPAN,22,Other South American
+HISPAN,23,Latin American
+HISPAN,24,Spaniard
+HISPAN,25,Other Spanish or Latino
+NUMRACE,1,One race
+NUMRACE,2,Two races
+NUMRACE,3,Three races
+NUMRACE,4,Four races
+NUMRACE,5,Five races
+NUMRACE,6,Six races
+RACESHORT,1,White alone
+RACESHORT,2,Black or African American alone
+RACESHORT,3,American Indian alone
+RACESHORT,4,Alaska Native alone
+RACESHORT,5,American Indian and Alaska Native
+RACESHORT,6,Asian alone
+RACESHORT,7,Native Hawaiian alone
+RACESHORT,8,Other Pacific Islander alone
+RACESHORT,9,Native Hawaiian/Pacific Islander
+RACESHORT,10,Some other race alone
+RACESHORT,11,Two or more major race groups
