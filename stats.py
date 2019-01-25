@@ -113,3 +113,42 @@ def tabulate_proportion(x, field, dd=None):
         group size proportions tabulated within levels of field
     '''
     return tabulate(x, field, dd) / total(x)
+
+
+def crosstab(x, row, col, dd, proportion=False):
+    '''
+    Groups x by fields row and col and cross-tabulates totals (default) or
+    proportions by cell. If the data dictionary is provided, then row or col
+    are replaced with categoricals named acccording to dd.
+
+    Args:
+        x: person or housing data frame
+        row: string name of field for row-groups
+        col: string name of field for column-groups
+        dd: optional data dictionary for renaming the tabulation labels
+        proportion: default False, if True, return proportions, else totals
+
+    Returns:
+        a pandas data frame containing the cross-tabulation
+    '''
+    if row not in x.columns:
+        raise IndexError('Row name not in data dictionary.')
+    if col not in x.columns:
+        raise IndexError('Column name not in data dictionary.')
+    fields = set(dd.field)
+    if row in fields:
+        rowvar = census2010.make_categorical(x, row, dd)
+    else:
+        rowvar = x[row]
+    if col in fields:
+        colvar = census2010.make_categorical(x, col, dd)
+    else:
+        colvar = x[col]
+    if 'HWEIGHT' in x.columns:
+        vals = x.HWEIGHT
+    elif 'PWEIGHT' in x.columns:
+        vals = x.PWEIGHT
+    else:
+        raise ValueError('No instance weight field present. Is this census data?')
+    return pd.crosstab(index=rowvar, columns=colvar, values=vals,
+                    aggfunc=sum, margins=True, normalize=proportion)
